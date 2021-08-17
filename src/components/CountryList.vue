@@ -16,8 +16,10 @@
           class="object-cover w-full h-full"
         />
       </div>
-      <div class="p-6">
-        <h2 class="text-lg font-semibold mb-4">{{ country.name }}</h2>
+      <div class="h-48 p-6">
+        <h2 class="text-lg font-semibold mb-4">
+          {{ country.name }}
+        </h2>
         <p class="font-semibold">
           Population:
           <span class="font-light">{{

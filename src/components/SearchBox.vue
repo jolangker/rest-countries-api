@@ -31,7 +31,6 @@
       placeholder="Search for a country..."
     />
   </div>
-  {{ searchCountry }}
 </template>
 
 <script>

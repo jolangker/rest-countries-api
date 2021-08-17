@@ -1,6 +1,6 @@
 <template>
   <div class="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-y-14 gap-x-32">
-    <div class="p-2 rounded bg-light-elements dark:bg-dark-elements">
+    <div class="p-2 rounded shadow bg-light-elements dark:bg-dark-elements">
       <img
         :src="details.flag"
         :alt="details.name + ' Flag'"
@@ -50,35 +50,48 @@
           </p>
           <p class="font-semibold">
             Currencies:
-            <span
-              v-for="curr in details.currencies"
-              :key="curr"
-              class="font-light"
-              >{{ curr.name }}</span
-            >
+            <span class="font-light">{{ currencies.join(", ") }}</span>
           </p>
           <p class="font-semibold">
             Languages:
-            <span
-              v-for="lang in details.languages"
-              :key="lang"
-              class="font-light"
-              >{{ lang.name }},
-            </span>
+            <span class="font-light">{{ languages.join(", ") }}</span>
           </p>
         </div>
+      </div>
+      <div class="mt-8">
+        <border-country
+          v-if="details.borders.length"
+          :borders="details.borders"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { reactive } from "@vue/reactivity";
+import BorderCountry from "../components/BorderCountry.vue";
 export default {
+  components: { BorderCountry },
   props: {
     details: Object,
-    required: true,
   },
-  setup(props) {},
+  setup(props) {
+    const languages = reactive([]);
+    const langs = props.details.languages;
+    langs.forEach((lang) => {
+      languages.push(lang.name);
+    });
+
+    const currencies = reactive([]);
+    const currs = props.details.currencies;
+    currs.forEach((curr) => {
+      currencies.push(curr.name);
+      const dat = curr;
+    });
+
+    return { languages, currencies };
+  },
 };
 </script>
 
