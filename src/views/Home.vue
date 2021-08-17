@@ -56,9 +56,9 @@ export default {
 
     fetchData();
 
-    const acceptSeacrhValue = ref("");
+    const acceptSearchValue = ref("");
     const getSearchValue = (val) => {
-      acceptSeacrhValue.value = val;
+      acceptSearchValue.value = val;
     };
 
     const acceptRegionFilter = ref("");
@@ -69,7 +69,7 @@ export default {
     const filteredCountries = computed(() => {
       return countries.value.filter((country) => {
         return (
-          country.name.includes(acceptSeacrhValue.value) &&
+          country.name.includes(acceptSearchValue.value) &&
           country.region.includes(acceptRegionFilter.value)
         );
       });

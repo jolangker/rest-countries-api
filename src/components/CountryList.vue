@@ -40,9 +40,7 @@
 <script>
 export default {
   props: {
-    country: {
-      type: Object,
-    },
+    country: Object,
   },
 };
 </script>
